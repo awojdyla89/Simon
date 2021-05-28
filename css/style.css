@@ -1,69 +1,67 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 body {
-    font-family: Helvetica;
-    background-color: antiquewhite;
-    
+  margin: 0 auto;
+  font-family: Helvetica;
+  background-color: antiquewhite;
 }
 #wrapper {
-    max-width:1200px;
-    margin: auto 0;
-    background-color: azure;
-    padding: 32px;
+  margin: auto 0;
+  background-color: azure;
+  padding: 32px;
 }
 
 header {
-    background-color: burlywood;
-    height: 150px;
-    padding: 4px;
+  background-color: burlywood;
+  height: 120px;
+  padding: 4px;
 }
 header h1 {
-    text-align: center;
-    line-height: 50px;
+  text-align: center;
+  line-height: 50px;
 }
 header h2 {
-    text-align: end;
-    line-height: 50px;
+  text-align: end;
+  line-height: 10px;
 }
 
 ul {
-    
-    padding: 50px 0 100px 0;
-    text-align: center;
-    line-height: 32px;
-    background-color: gray;
+  padding: 50px 0 100px 0;
+  text-align: center;
+  line-height: 0px;
+  background-color: gray;
 }
-ul li{
-    display: inline;
-    padding: 0 80px 0 80px; 
-    font-size: 20px;
-    
+
+ul li {
+  display: inline;
+  padding: 0 100px 0 100px;
+  font-size: 20px;
 }
 
 main {
-    text-align: center;
-    color: blanchedalmond;
-    background-color: black;
-    padding: 50px 0 400px 0;
+  text-align: center;
+  color: blanchedalmond;
+  background-color: black;
+  padding: 50px 0 50px 0;
 }
 .quarter-panel {
-    border-bottom-left-radius: 200px;
-    width: 200px;
-    height: 200px;
+   border-bottom-left-radius: 140px; 
+  width: 150px;
+  height: 150px;
 }
 
 .red-button {
-    background-color: red;
+  background-color: red;
 }
 .blue-button {
-    background-color: blue;
+  background-color: blue;
 }
 .green-button {
-    background-color: green;
+  background-color: green;
 }
 
 .yellow-button {
-    background-color: yellow;
+  background-color: yellow;
 }
