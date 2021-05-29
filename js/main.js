@@ -36,8 +36,10 @@ let currentScore;
 // - the current score
 // - the high score
 // - plays the updated random computer sequence for the buttons
-
-
+let test = document.querySelector('#player-name');
+test.innerText = "Adam"
+let test1 = document.querySelector('#current-result');
+test1.innerText = "127800"
 // create a randomNum function that generates a random number between 1-4
 function randomNum(){
     let randomIndex =  Math.floor(Math.random() * 4) + 1;
