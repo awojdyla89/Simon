@@ -36,10 +36,6 @@ let currentScore;
 // - the current score
 // - the high score
 // - plays the updated random computer sequence for the buttons
-let test = document.querySelector('#player-name');
-test.innerText = "Adam"
-let test1 = document.querySelector('#current-result');
-test1.innerText = "127800"
 // create a randomNum function that generates a random number between 1-4
 function randomNum(){
     let randomIndex =  Math.floor(Math.random() * 4) + 1;
@@ -51,3 +47,13 @@ function randomNum(){
 // create a function that increments the random sequence using the randomNum helper function
 
 //
+let test = document.querySelector('#player-name');
+test.innerText = "Adam"
+let test1 = document.querySelector('#current-result');
+test1.innerText = "127800"
+
+function playTime(){
+    console.log("start button is working!")
+}
+
+ document.querySelector('#start-button').addEventListener('click', playTime);
