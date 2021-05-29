@@ -46,14 +46,36 @@ function randomNum(){
 
 // create a function that increments the random sequence using the randomNum helper function
 
-//
-let test = document.querySelector('#player-name');
-test.innerText = "Adam"
-let test1 = document.querySelector('#current-result');
-test1.innerText = "127800"
+// basic checks of DOM manipulation for buttons
+let pName = document.querySelector('#player-name');
+pName.innerText = "Adam"
+let cScore = document.querySelector('#current-result');
+cScore.innerText = 2;
+let hScore = document.querySelector('#high-result');
+hScore.innerText = 27;
 
 function playTime(){
-    console.log("start button is working!")
+    console.log("start button clicked");
+}
+function resetGame(){
+    console.log("reset button clicked");
+}
+function greenClick(){
+    console.log("green button clicked");
+}
+function yellowClick(){
+    console.log("yellow button clicked");
+}
+function redClick(){
+    console.log("red button clicked");
+}
+function blueClick(){
+    console.log("blue button clicked");
 }
 
  document.querySelector('#start-button').addEventListener('click', playTime);
+ document.querySelector('#reset-button').addEventListener('click', resetGame);
+ document.querySelector('.green-button').addEventListener('click', greenClick);
+ document.querySelector('.yellow-button').addEventListener('click', yellowClick);
+ document.querySelector('.red-button').addEventListener('click', redClick);
+ document.querySelector('.blue-button').addEventListener('click', blueClick);

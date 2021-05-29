@@ -3,6 +3,7 @@ html,
   box-sizing: border-box;
   font-family: Helvetica;
 }
+
 /* flex box - creates one column of stacked child nodes (header, div, main) */
 body {
   display: flex;
@@ -10,16 +11,16 @@ body {
   justify-content: center;
   align-items: stretch;
   margin: auto;
-  
 }
+
 /* css grid - creates a 1 x 1 grid (1 row 1 columns) for the title */
 header {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    text-align: center;
-    color: rgb(232, 126, 69);
-    background-color: blueviolet;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  text-align: center;
+  color: rgb(232, 126, 69);
+  background-color: blueviolet;
 }
 
 /* css grid - creates a 1 x 3 grid (1 row 3 columns) player name, current score, high score  */
@@ -42,14 +43,14 @@ header {
 
 main {
   text-align: center;
-  background-color: rgba(1, 61, 114, 0.784);
-  padding: 50px 0 50px 0;
+  background-color: rgb(1, 21, 70);
+  padding: 50px 0 0px 0;
 }
 
 .circle {
   padding-top: 50px;
-  
 }
+
 /* creates the overal circle using inline block property */
 .quarter-panel {
   display: inline-block;
@@ -58,20 +59,18 @@ main {
   cursor: pointer;
 }
 
-.quarter-panel:hover{
-    box-shadow: inset 0px 0px 0px 2px rgba(5, 69, 45, 0.791);
-    box-sizing: border-box;
+.quarter-panel:hover {
+  box-shadow: inset 0px 0px 0px 2px rgba(5, 69, 45, 0.791);
+  box-sizing: border-box;
 }
 
 .green-button {
-    border-top-left-radius: 100%;
-    background-color: green;
+  border-top-left-radius: 100%;
+  background-color: green;
 }
-
-
 .yellow-button {
   border-top-right-radius: 100%;
-  background-color: yellow;
+  background-color: rgb(230, 230, 0);
 }
 .red-button {
   border-bottom-left-radius: 100%;
@@ -83,52 +82,52 @@ main {
 }
 
 .relative-div {
-    position: relative;
+  position: relative;
 }
 
 .inner-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: rgb(0, 0, 0);
-    display:inline-block;
-    position: absolute;
-    top: 203px;
-    right: 494px;
-    
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  display: inline-block;
+  position: relative;
+  bottom: 350px;
+  right: 0px;
 }
 
 #start-button {
-    width: 200px;
-    height: 100px; 
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    border: 8px solid rgb(186, 3, 3);
-    background-color: rgb(0, 0, 0);
-    border-bottom: 0;
-    color: red;
-    font-size: 25px ;
-    cursor: pointer;
+  width: 200px;
+  height: 100px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border: 8px solid black;
+  background-color: rgb(48, 45, 45);
+  border-bottom: 0;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #reset-button {
-    width: 200px;
-    height: 100px; 
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border: 8px solid rgb(186, 3, 3);
-    background-color: rgb(0, 0, 0);
-    border-top: 0;
-    color: red;
-    font-size: 25px;
-    cursor: pointer;
-    
+  width: 200px;
+  height: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border: 8px solid black;
+  background-color: rgb(48, 45, 45);
+  border-top: 0;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }
+
 #start-button:hover {
-    color: rgb(15, 232, 15);
-    
+  color: rgb(15, 232, 15);
 }
-#reset-button:hover{
-    color: rgb(254, 254, 95);
-  
+
+#reset-button:hover {
+  color: rgb(254, 254, 95);
 }
