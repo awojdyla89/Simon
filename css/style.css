@@ -70,15 +70,15 @@ main {
 }
 .yellow-button {
   border-top-right-radius: 100%;
-  background-color: rgb(230, 230, 0);
+  background-color: yellow;
 }
 .red-button {
   border-bottom-left-radius: 100%;
-  background-color: rgb(242, 54, 167);
+  background-color: red;
 }
 .blue-button {
   border-bottom-right-radius: 100%;
-  background-color: rgb(19, 146, 244);
+  background-color: blue;
 }
 
 .relative-div {
