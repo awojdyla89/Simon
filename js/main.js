@@ -19,7 +19,7 @@ let redBtn = document.querySelector("#red");
 let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
-
+let buttonArr = [greenBtn, yellowBtn, redBtn, blueBtn];
 /*----- event listeners -----*/
 
 //document.querySelector("#start-button").addEventListener("click", render);
@@ -29,14 +29,56 @@ document.querySelector("#reset-button").addEventListener("click", init);
 //yellowBtn.addEventListener("click", userGenSequence);
 //blueBtn.addEventListener("click", userGenSequence);
 
+computerSequence = ["red", "green", "blue", "yellow"];
 function blink() {
-  greenBtn.style.backgroundColor = "white";
-  setTimeout("setToGreen()", 300);
-  
+  for (i = 0; i < computerSequence.length; i++) {
+    console.log(computerSequence[i]);
+    if (computerSequence[i] == "red") {
+      console.log("red is true");
+      redBtn.style.backgroundColor = "white";
+      setTimeout("setToRed()", 500);
+    }
+    else if (computerSequence[i] == "blue") {
+      console.log("blue is true");
+      blueBtn.style.backgroundColor = "white";
+      setTimeout("setToBlue()", 500);
+    }
+    else if (computerSequence[i] == "green") {
+      console.log("green is true");
+      blueBtn.style.backgroundColor = "white";
+      setTimeout("setToGreen()", 500);
+    }
+    else if (computerSequence[i] == "yellow") {
+      console.log("yellow is true");
+      blueBtn.style.backgroundColor = "white";
+      setTimeout("setToYellow()", 500);
+    }
+  }
 }
 function setToGreen() {
   greenBtn.style.backgroundColor = "green";
 }
+function setToRed() {
+  redBtn.style.backgroundColor = "red";
+}
+function setToBlue() {
+  blueBtn.style.backgroundColor = "blue";
+}
+function setToYellow() {
+  yellowBtn.style.backgroundColor = "yellow";
+}
+
+//startBlinking();
+//blink();
+
+function startBlinking() {
+  setInterval(function () {
+    console.log("interval");
+    blink();
+    console.log("blink()");
+  }, 1000);
+}
+
 
 init();
 /*----- functions -----*/
@@ -66,26 +108,19 @@ function compGenSequence() {
   return computerSequence;
 }
 
-// function userGenSequence(e) {
-//     userSequence.push(e.target.id);
-//     compGenSequence();
-//     //console.log("user>" + userSequence , "computer> " + computerSequence);
-//     //console.log("user>" + userSequence.length , "computer> " + computerSequence.length);
-//   return userSequence;
-// }
 
-document.querySelectorAll(".quarter-panel").forEach((item) => {
-  item.addEventListener("mousedown", (flashButton) => {
-    userSequence.push(item.id);
-    compGenSequence();
-    item.style.backgroundColor = "white";
-  });
-  document.querySelectorAll(".quarter-panel").forEach((newItem) => {
-    newItem.addEventListener("mouseup", (resetButton) => {
-      newItem.style.backgroundColor = item.style.backgroundColor;
-    });
-  });
-});
+// document.querySelectorAll(".quarter-panel").forEach((item) => {
+//   item.addEventListener("mousedown", (flashButton) => {
+//     userSequence.push(item.id);
+//     compGenSequence();
+//     item.style.backgroundColor = "white";
+//   });
+//   document.querySelectorAll(".quarter-panel").forEach((newItem) => {
+//     newItem.addEventListener("mouseup", (resetButton) => {
+//       newItem.style.backgroundColor = item.style.backgroundColor;
+//     });
+//   });
+// });
 
 //function to get player name
 function getPlayerName() {
