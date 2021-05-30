@@ -13,19 +13,22 @@ playerName = document.querySelector("#player-name");
 
 let cScore = document.querySelector("#current-result");
 let hScore = document.querySelector("#high-result");
-let greenBtn = document.querySelector(".green-button");
-let yellowBtn = document.querySelector(".yellow-button");
-let redBtn = document.querySelector(".red-button");
-let blueBtn = document.querySelector(".blue-button");
+let greenBtn = document.querySelector("#green");
+let yellowBtn = document.querySelector("#yellow");
+let redBtn = document.querySelector("#red");
+let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
 
 /*----- event listeners -----*/
 
-document.querySelector("#start-button").addEventListener("click", render);
+//document.querySelector("#start-button").addEventListener("click", render);
 document.querySelector("#reset-button").addEventListener("click", init);
 document.querySelector(".quarter-panel").addEventListener("click", flash);
-document.querySelector(".quarter-panel").addEventListener("click", userGenSequence);
+greenBtn.addEventListener("click", userGenSequence);
+redBtn.addEventListener("click", userGenSequence);
+yellowBtn.addEventListener("click", userGenSequence);
+blueBtn.addEventListener("click", userGenSequence);
 
 init();
 /*----- functions -----*/
@@ -41,36 +44,46 @@ function init() {
   //render();
 }
 
-function render() {
-    getPlayerName();
+// function render() {
+//     getPlayerName();
+
+// }
+
+function compareChoice(){
+    
+    if(userSequence.length == computerSequence.length){
+        console.log
+        for(let i = 0; i < userSequence.length; i++){
+            console.log("user>" + userSequence[i] , "computer> " + computerSequence[i])
+        }
+    }
+   
+    
 }
+compareChoice();
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
   let choices = ["red", "yellow", "blue", "green"];
-  let randomIndex = Math.floor(Math.random() * 4) + 1;
+  let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
   computerSequence.push(choices[randomIndex]);
   return computerSequence;
 }
 
-function userGenSequence() {
-    document.querySelectorAll('.quarter-panel').forEach((item) =>{
-        item.addEventListener('click', (clickButton) => {
-            userSequence.push(item.id);
-        })
-    })
-    return userSequence;
+function userGenSequence(e) {
+  userSequence.push(e.target.id);
+  compGenSequence();
+  return userSequence;
 }
 
 function flash() {
   document.querySelectorAll(".quarter-panel").forEach((item) => {
-      item.addEventListener("mousedown", (flashButton) => {
-          item.style.backgroundColor = "white";
-        });
-        document.querySelectorAll(".quarter-panel").forEach((newItem) => {
-            newItem.addEventListener("mouseup", (resetButton) => {
-                newItem.style.backgroundColor = item.style.backgroundColor;
-                
+    item.addEventListener("mousedown", (flashButton) => {
+      item.style.backgroundColor = "white";
+    });
+    document.querySelectorAll(".quarter-panel").forEach((newItem) => {
+      newItem.addEventListener("mouseup", (resetButton) => {
+        newItem.style.backgroundColor = item.style.backgroundColor;
       });
     });
   });
