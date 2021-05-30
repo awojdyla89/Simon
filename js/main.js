@@ -49,30 +49,19 @@ function init() {
 
 // }
 
-function compareChoice(){
-    
-    if(userSequence.length == computerSequence.length){
-        console.log
-        for(let i = 0; i < userSequence.length; i++){
-            console.log("user>" + userSequence[i] , "computer> " + computerSequence[i])
-        }
-    }
-   
-    
-}
-compareChoice();
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
-  let choices = ["red", "yellow", "blue", "green"];
-  let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
-  computerSequence.push(choices[randomIndex]);
-  return computerSequence;
+    let choices = ["red", "yellow", "blue", "green"];
+    let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
+    computerSequence.push(choices[randomIndex]);
+    return computerSequence;
 }
 
 function userGenSequence(e) {
-  userSequence.push(e.target.id);
-  compGenSequence();
+    userSequence.push(e.target.id);
+    compGenSequence();
+    //console.log("user>" + userSequence , "computer> " + computerSequence)
   return userSequence;
 }
 
