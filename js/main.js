@@ -5,6 +5,7 @@ let playerName;
 let highScore;
 let currentScore;
 let userSequence = [];
+let compSequence = []; 
 
 
 /*----- cached element references -----*/
@@ -19,23 +20,17 @@ let redBtn = document.querySelector("#red");
 let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
-let compSequence = []; //[greenBtn, yellowBtn, redBtn, blueBtn];
-//let computerSequence = ["red", "green", "blue", "yellow"];
+
 /*----- event listeners -----*/
 
-document.querySelector("#start-button").addEventListener("click", render);
+document.querySelector("#start-button").addEventListener("click", playRound);
 document.querySelector("#reset-button").addEventListener("click", init);
-//greenBtn.addEventListener("click", blink);
-//redBtn.addEventListener("click", userGenSequence);
-//yellowBtn.addEventListener("click", userGenSequence);
-//blueBtn.addEventListener("click", userGenSequence);
+
 
 function showMoves() {
   var i = 0;
   var moves = setInterval(function () {
-    //console.log("random = " +buttonArr[i].id);
-    //console.log("user = " +userSequence[i]);
-    playGame(compSequence[i]);
+    dimButton(compSequence[i]);
     i++;
     if (i >= compSequence.length) {
       clearInterval(moves);
@@ -43,7 +38,7 @@ function showMoves() {
   }, 600);
 }
 
-function playGame(doc) {
+function dimButton(doc) {
   doc.style.opacity = "0.6";
   setTimeout(function () {
     doc.style.opacity = "1";
@@ -55,14 +50,17 @@ function playGame(doc) {
 
 // create an init() function that creates the starting foundation of the game
 function init() {
-  
   playerName.innerText = "";
   cScore.innerText = 0;
   hScore.innerText = 0;
   userSequence = [];
   compSequence = [];
+}
 
-  //render();
+function playRound(){
+  getPlayerName();
+  render();
+
 }
 
 function render(){
