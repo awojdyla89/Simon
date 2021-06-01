@@ -19,8 +19,8 @@ let redBtn = document.querySelector("#red");
 let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
-let buttonArr = [greenBtn, yellowBtn, redBtn, blueBtn];
-computerSequence = ["red", "green", "blue", "yellow"];
+//let computerSequence = [greenBtn, yellowBtn, redBtn, blueBtn];
+//let computerSequence = ["red", "green", "blue", "yellow"];
 /*----- event listeners -----*/
 
 //document.querySelector("#start-button").addEventListener("click", render);
@@ -33,28 +33,74 @@ document.querySelector("#reset-button").addEventListener("click", init);
 function showMoves() {
   var i = 0;
   var moves = setInterval(function(){
+    console.log(computerSequence[i])
     playGame(computerSequence[i]);
     i++;
-    if (i >=computerSequence.length) {
+    if (i >=buttonArr.length) {
       clearInterval(moves);
     }
   }, 600)
   
 }
 
-function playGame(field) {
-  document.getElementById(field).style.opacity="0.3";
+function playGame(computerSequence) {
+  computerSequence.style.opacity="0.3";
   setTimeout(function(){
-      document.getElementById(field).style.opacity="1";
+      computerSequence.style.opacity="1";
   }, 1000);
+  // computerSequence.forEach(color =>{
+  //   if(color === "red"){
+  //     redBtn.style.opacity="0.3";
+  //     setTimeout(function(){
+  //       redBtn.style.opacity="1";
+  //   }, 1000);
+  //   }
+  //   if(color === "blue"){
+  //     blueBtn.style.opacity="0.3";
+  //     setTimeout(function(){
+  //       blueBtn.style.opacity="1";
+  //   }, 1000);
+  //   }
+  //   if(color === "green"){
+  //     greenBtn.style.opacity="0.3";
+  //     setTimeout(function(){
+  //       greenBtn.style.opacity="1";
+  //   }, 1000);
+  //   }
+  //   if(color === "yellow"){
+  //     yellowBtn.style.opacity="0.3";
+  //     setTimeout(function(){
+  //       yellowBtn.style.opacity="1";
+  //   }, 1000);
+  //   }
+  // })
+  
 }
-showMoves();
+//showMoves();
+
+// function convertQuery(){
+//   computerSequence.forEach(color =>{
+//     if(color === "red"){
+//       color = redBtn;
+//     }
+//     if(color === "blue"){
+//       color = blueBtn;
+//     }
+//     if(color === "green"){
+//       color = greenBtn;
+//     }
+//     if(color === "yellow"){
+//       color = yellowBtn;
+//     }
+//   })
+//   return color;
+// }
 
 
 
 
 
-var flashInterval = setInterval(blink(), 1000);
+//var flashInterval = setInterval(blink(), 1000);
 
 // function setColor() {
   
@@ -159,26 +205,27 @@ function init() {
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
-  let choices = ["red", "yellow", "blue", "green"];
+  let choices = [greenBtn, redBtn, blueBtn, yellowBtn];
   let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
   computerSequence.push(choices[randomIndex]);
 
   return computerSequence;
 }
 
-// click event that flashes the button
-// document.querySelectorAll(".quarter-panel").forEach((item) => {
-//   item.addEventListener("mousedown", (flashButton) => {
-//     userSequence.push(item.id);
-//     compGenSequence();
-//     item.style.backgroundColor = "white";
-//   });
-//   document.querySelectorAll(".quarter-panel").forEach((newItem) => {
-//     newItem.addEventListener("mouseup", (resetButton) => {
-//       newItem.style.backgroundColor = item.style.backgroundColor;
-//     });
-//   });
-// });
+//click event that flashes the button
+document.querySelectorAll(".quarter-panel").forEach((item) => {
+  item.addEventListener("mousedown", (flashButton) => {
+    userSequence.push(item.id);
+    compGenSequence();
+    //showMoves();
+    item.style.backgroundColor = "white";
+  });
+  document.querySelectorAll(".quarter-panel").forEach((newItem) => {
+    newItem.addEventListener("mouseup", (resetButton) => {
+      newItem.style.backgroundColor = item.style.backgroundColor;
+    });
+  });
+});
 
 //function to get player name
 function getPlayerName() {
