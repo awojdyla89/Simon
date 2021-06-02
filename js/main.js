@@ -63,27 +63,67 @@ function playRound(){
 function render(){ 
   compGenSequence();
   showMoves(); 
+  //compareResults();
+}
 
-}
-let j = 0;
+// let j = 0;
+// function compareResults(){
+//   if(userSequence.length === compSequence.length){
+//     cScore.innerText = j + 1;
+//     for(let i = 0; i < compSequence.length; i++){
+//       if(userSequence[i] === compSequence[i].id){
+//         console.log("user: " + userSequence + " computer: " + compSequence[i].id)
+//         continue;
+//       }else {
+//         console.log(userSequence + " ==> " + compSequence[i].id)
+//         alert('YOU LOSE')
+//         return;
+//       }
+//     }
+//     j++;
+//     userSequence =[];
+//     render();
+//   }
+// }
+
 function compareResults(){
-  if(userSequence.length === compSequence.length){
-    cScore.innerText = j + 1;
-    for(let i = 0; i < compSequence.length; i++){
-      if(userSequence[i] === compSequence[i].id){
-        console.log("user: " + userSequence + " computer: " + compSequence[i].id)
-        continue;
-      }else {
-        console.log(userSequence + " ==> " + compSequence[i].id)
-        alert('YOU LOSE')
-        return;
-      }
+  for(let i = 0; i < userSequence.length; i++){
+    if(userSequence[i] === compSequence[i].id && userSequence.length !== compSequence.length){
+      console.log("keep clicking");
+      continue;
+      
+    }else if(userSequence[i] === compSequence[i].id && userSequence.length === compSequence.length){
+      userSequence = [];
+      render();
+      console.log('win render');
+      return;
+    }else if(userSequence[i] !== compSequence[i].id){
+      console.log('lose')
+      break;
     }
-    j++;
-    userSequence =[];
-    render();
+     
   }
+  
 }
+
+
+// function compareResults(){
+//   for(click in compSequence){
+//     if(userSequence[click] === compSequence[click].id && userSequence.length !== compSequence.length){
+//       //console.log("user: " + userSequence[click] + " comp: " + compSequence[click].id)
+//       console.log("not equal length")
+//     }else if (userSequence[click] !== compSequence[click].id){
+//       console.log(userSequence[click] + "==" + compSequence[click].id)
+//       console.log('wrong move');
+//       //alert('YOU LOSE')
+//       return;
+//     }
+//     if (userSequence[click] === compSequence[click].id && userSequence.length === compSequence.length){
+//     userSequence = [];
+//     render();
+//   }
+// }
+// }
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
