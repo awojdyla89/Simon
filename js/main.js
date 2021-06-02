@@ -1,10 +1,10 @@
 /*----- constants -----*/
 
 /*----- app's state (variables) -----*/
-let highScore = 1 ;
+let highScore = 1;
 let currentScore = 1;
 let userSequence = [];
-let compSequence = []; 
+let compSequence = [];
 
 /*----- cached element references -----*/
 
@@ -26,8 +26,8 @@ document.querySelector("#reset-button").addEventListener("click", init);
 /*----- functions -----*/
 
 function showMoves() {
-  var i = 0;
-  var moves = setInterval(function () {
+  let i = 0;
+  let moves = setInterval(function () {
     dimButton(compSequence[i]);
     i++;
     if (i >= compSequence.length) {
@@ -56,7 +56,7 @@ function init() {
   getPlayerName();
 }
 
-function playRound(){
+function playRound() {
   cScore.innerText = 0;
   //hScore.innerText = 0;
   userSequence = [];
@@ -64,31 +64,36 @@ function playRound(){
   render();
 }
 
-function render(){ 
+function render() {
   compGenSequence();
-  showMoves(); 
+  showMoves();
 }
-let j = 1;
-function compareResults(){
-  for(let i = 0; i < userSequence.length; i++){
-    if(userSequence[i] === compSequence[i].id && userSequence.length !== compSequence.length){
+
+function compareResults() {
+  for (let i = 0; i < userSequence.length; i++) {
+    if (
+      userSequence[i] === compSequence[i].id &&
+      userSequence.length !== compSequence.length
+    ) {
       continue;
-      
-    }else if(userSequence[i] === compSequence[i].id && userSequence.length === compSequence.length){
+    } else if (
+      userSequence[i] === compSequence[i].id &&
+      userSequence.length === compSequence.length
+    ) {
       cScore.innerText = currentScore++;
-      if(currentScore > highScore){
-      hScore.innerText = highScore++;
+      if (currentScore > highScore) {
+        hScore.innerText = highScore++;
       }
       userSequence = [];
       render();
       return;
-    }else if(userSequence[i] !== compSequence[i].id){
+    } else if (userSequence[i] !== compSequence[i].id) {
       console.log(currentScore);
-      alert('You lost');
-     currentScore = 1;
-     hScore.innerText = highScore - 1;
+      alert("You lost");
+      currentScore = 1;
+      hScore.innerText = highScore - 1;
       return highScore;
-    }  
+    }
   }
 }
 
@@ -125,24 +130,3 @@ function getPlayerName() {
   }
   return playerName;
 }
-
-// alternate function to compare results but does not compare until full length of sequence
-// let j = 0;
-// function compareResults(){
-//   if(userSequence.length === compSequence.length){
-//     cScore.innerText = j + 1;
-//     for(let i = 0; i < compSequence.length; i++){
-//       if(userSequence[i] === compSequence[i].id){
-//         console.log("user: " + userSequence + " computer: " + compSequence[i].id)
-//         continue;
-//       }else {
-//         console.log(userSequence + " ==> " + compSequence[i].id)
-//         alert('YOU LOSE')
-//         return;
-//       }
-//     }
-//     j++;
-//     userSequence =[];
-//     render();
-//   }
-// }
