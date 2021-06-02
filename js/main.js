@@ -2,7 +2,7 @@
 
 /*----- app's state (variables) -----*/
 let highScore;
-let currentScore;
+let currentScore = 1;
 let userSequence = [];
 let compSequence = []; 
 
@@ -89,21 +89,18 @@ function render(){
 function compareResults(){
   for(let i = 0; i < userSequence.length; i++){
     if(userSequence[i] === compSequence[i].id && userSequence.length !== compSequence.length){
-      console.log("keep clicking");
       continue;
       
     }else if(userSequence[i] === compSequence[i].id && userSequence.length === compSequence.length){
+      cScore.innerText = currentScore++;
       userSequence = [];
       render();
-      console.log('win render');
       return;
     }else if(userSequence[i] !== compSequence[i].id){
-      console.log('lose')
+      alert('You lost');
       break;
-    }
-     
+    }  
   }
-  
 }
 
 
