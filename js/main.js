@@ -1,16 +1,14 @@
 /*----- constants -----*/
 
 /*----- app's state (variables) -----*/
-let highScore;
+let highScore = 1 ;
 let currentScore = 1;
 let userSequence = [];
 let compSequence = []; 
 
-
 /*----- cached element references -----*/
 
 let playerName = document.querySelector("#player-name");
-
 let cScore = document.querySelector("#current-result");
 let hScore = document.querySelector("#high-result");
 let greenBtn = document.querySelector("#green");
@@ -25,6 +23,7 @@ let resetBtn = document.querySelector("#reset-button");
 document.querySelector("#start-button").addEventListener("click", playRound);
 document.querySelector("#reset-button").addEventListener("click", init);
 
+/*----- functions -----*/
 
 function showMoves() {
   var i = 0;
@@ -44,48 +43,32 @@ function dimButton(doc) {
   }, 500);
 }
 
-/*----- functions -----*/
-
+getPlayerName();
 // create an init() function that creates the starting foundation of the game
 function init() {
   playerName.innerText = "";
   cScore.innerText = 0;
   hScore.innerText = 0;
+  highScore = 1;
+  currentScore = 1;
   userSequence = [];
   compSequence = [];
+  getPlayerName();
 }
 
 function playRound(){
-  getPlayerName();
+  cScore.innerText = 0;
+  //hScore.innerText = 0;
+  userSequence = [];
+  compSequence = [];
   render();
 }
 
 function render(){ 
   compGenSequence();
   showMoves(); 
-  //compareResults();
 }
-
-// let j = 0;
-// function compareResults(){
-//   if(userSequence.length === compSequence.length){
-//     cScore.innerText = j + 1;
-//     for(let i = 0; i < compSequence.length; i++){
-//       if(userSequence[i] === compSequence[i].id){
-//         console.log("user: " + userSequence + " computer: " + compSequence[i].id)
-//         continue;
-//       }else {
-//         console.log(userSequence + " ==> " + compSequence[i].id)
-//         alert('YOU LOSE')
-//         return;
-//       }
-//     }
-//     j++;
-//     userSequence =[];
-//     render();
-//   }
-// }
-
+let j = 1;
 function compareResults(){
   for(let i = 0; i < userSequence.length; i++){
     if(userSequence[i] === compSequence[i].id && userSequence.length !== compSequence.length){
@@ -93,34 +76,21 @@ function compareResults(){
       
     }else if(userSequence[i] === compSequence[i].id && userSequence.length === compSequence.length){
       cScore.innerText = currentScore++;
+      if(currentScore > highScore){
+      hScore.innerText = highScore++;
+      }
       userSequence = [];
       render();
       return;
     }else if(userSequence[i] !== compSequence[i].id){
+      console.log(currentScore);
       alert('You lost');
-      break;
+     currentScore = 1;
+     hScore.innerText = highScore - 1;
+      return highScore;
     }  
   }
 }
-
-
-// function compareResults(){
-//   for(click in compSequence){
-//     if(userSequence[click] === compSequence[click].id && userSequence.length !== compSequence.length){
-//       //console.log("user: " + userSequence[click] + " comp: " + compSequence[click].id)
-//       console.log("not equal length")
-//     }else if (userSequence[click] !== compSequence[click].id){
-//       console.log(userSequence[click] + "==" + compSequence[click].id)
-//       console.log('wrong move');
-//       //alert('YOU LOSE')
-//       return;
-//     }
-//     if (userSequence[click] === compSequence[click].id && userSequence.length === compSequence.length){
-//     userSequence = [];
-//     render();
-//   }
-// }
-// }
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
@@ -145,9 +115,7 @@ document.querySelectorAll(".quarter-panel").forEach((item) => {
       newItem.style.opacity = "1.0";
     });
   });
-  
 });
-
 
 //function to get player name
 function getPlayerName() {
@@ -158,75 +126,23 @@ function getPlayerName() {
   return playerName;
 }
 
-//   for (i = 0; i < computerSequence.length; i++) {
-
-//     if (computerSequence[i] === "red") {
-//       console.log("red is true");
-//       redBtn.style.backgroundColor = "white";
-//       setTimeout("setToRed()", 500);
+// alternate function to compare results but does not compare until full length of sequence
+// let j = 0;
+// function compareResults(){
+//   if(userSequence.length === compSequence.length){
+//     cScore.innerText = j + 1;
+//     for(let i = 0; i < compSequence.length; i++){
+//       if(userSequence[i] === compSequence[i].id){
+//         console.log("user: " + userSequence + " computer: " + compSequence[i].id)
+//         continue;
+//       }else {
+//         console.log(userSequence + " ==> " + compSequence[i].id)
+//         alert('YOU LOSE')
+//         return;
+//       }
 //     }
-//      if (computerSequence[i] === "blue") {
-//       console.log("blue is true");
-//       blueBtn.style.backgroundColor = "white";
-//       setTimeout("setToBlue()", 100);
-//     }
-//      if (computerSequence[i] === "green") {
-//       console.log("green is true");
-//       greenBtn.style.backgroundColor = "white";
-//       setTimeout("setToGreen()", 100);
-//     }
-//      if (computerSequence[i] === "yellow") {
-//       console.log("yellow is true");
-//       yellowBtn.style.backgroundColor = "white";
-//       setTimeout("setToYellow()", 1000);
-//     }
+//     j++;
+//     userSequence =[];
+//     render();
 //   }
-
-// }
-
-// function setToGreen() {
-//   greenBtn.style.backgroundColor = "green";
-// }
-// function setToRed() {
-//   redBtn.style.backgroundColor = "red";
-// }
-// function setToBlue() {
-//   blueBtn.style.backgroundColor = "blue";
-// }
-// function setToYellow() {
-//   yellowBtn.style.backgroundColor = "yellow";
-// }
-// function playGame(field) {
-//   document.getElementById(field).style.opacity="0.3";
-//   setTimeout(function(){
-//       document.getElementById(field).style.opacity="1";
-//   }, 1000);
-// }
-//showMoves();
-
-//var flashInterval = setInterval(blink(), 1000);
-
-// function setColor() {
-
-// computerSequence.forEach((color) =>{
-//   if (color === "red") {
-//     console.log("red is true");
-//     redBtn.style.backgroundColor = redBtn.style.backgroundColor == "red" ? "white" : "red";
-//   }
-//   if (color === "blue") {
-//     console.log("blue is true");
-//     blueBtn.style.backgroundColor = blueBtn.style.backgroundColor == "blue" ? "white" : "blue";
-//   }
-//    if (color === "green") {
-//     console.log("green is true");
-//     greenBtn.style.backgroundColor = greenBtn.style.backgroundColor == "green" ? "white" : "green";
-//   }
-//    if (color === "yellow") {
-//     console.log("yellow is true");
-//     yellowBtn.style.backgroundColor = yellowBtn.style.backgroundColor == "yellow" ? "white" : "yellow";
-//   }
-// })
-// }
-// function stopColor() {
-//   clearInterval(flashInterval);
 // }
