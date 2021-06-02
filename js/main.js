@@ -23,28 +23,26 @@ let resetBtn = document.querySelector("#reset-button");
 document.querySelector("#start-button").addEventListener("click", playRound);
 document.querySelector("#reset-button").addEventListener("click", init);
 
+//for every user click event the button clicked is stored in an array.
+document.querySelectorAll(".quarter-panel").forEach((item) => {
+  item.addEventListener("mousedown", (flashButton) => {
+    userSequence.push(item.id);
+    //item.style.backgroundColor = "white";
+    item.style.opacity = "0.8";
+    compareResults();
+  });
+  document.querySelectorAll(".quarter-panel").forEach((newItem) => {
+    newItem.addEventListener("mouseup", (resetButton) => {
+      //newItem.style.backgroundColor = item.style.backgroundColor;
+      newItem.style.opacity = "1.0";
+    });
+  });
+});
+
 /*----- functions -----*/
 
-function showMoves() {
-  let i = 0;
-  let moves = setInterval(function () {
-    dimButton(compSequence[i]);
-    i++;
-    if (i >= compSequence.length) {
-      clearInterval(moves);
-    }
-  }, 600);
-}
-
-function dimButton(doc) {
-  doc.style.opacity = "0.6";
-  setTimeout(function () {
-    doc.style.opacity = "1";
-  }, 500);
-}
-
 getPlayerName();
-// create an init() function that creates the starting foundation of the game
+// initializes the game state with the reset button listener
 function init() {
   playerName.innerText = "";
   cScore.innerText = 0;
@@ -55,7 +53,7 @@ function init() {
   compSequence = [];
   getPlayerName();
 }
-
+// function called on the start button listener
 function playRound() {
   cScore.innerText = 0;
   //hScore.innerText = 0;
@@ -69,6 +67,27 @@ function render() {
   showMoves();
 }
 
+// asynchronous timing function that displays the computer generated sequence
+function showMoves() {
+  let i = 0;
+  let moves = setInterval(function () {
+    dimButton(compSequence[i]);
+    i++;
+    if (i >= compSequence.length) {
+      clearInterval(moves);
+    }
+  }, 600);
+}
+
+// helper function that creates a button dimming affect
+function dimButton(doc) {
+  doc.style.opacity = "0.6";
+  setTimeout(function () {
+    doc.style.opacity = "1";
+  }, 500);
+}
+
+// compares the computer generated sequence with the users sequence for equality
 function compareResults() {
   for (let i = 0; i < userSequence.length; i++) {
     if (
@@ -105,22 +124,6 @@ function compGenSequence() {
 
   return compSequence;
 }
-
-//click event that flashes the button
-document.querySelectorAll(".quarter-panel").forEach((item) => {
-  item.addEventListener("mousedown", (flashButton) => {
-    userSequence.push(item.id);
-    //item.style.backgroundColor = "white";
-    item.style.opacity = "0.8";
-    compareResults();
-  });
-  document.querySelectorAll(".quarter-panel").forEach((newItem) => {
-    newItem.addEventListener("mouseup", (resetButton) => {
-      //newItem.style.backgroundColor = item.style.backgroundColor;
-      newItem.style.opacity = "1.0";
-    });
-  });
-});
 
 //function to get player name
 function getPlayerName() {
