@@ -107,17 +107,21 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-      if(currentScore < 5){
-        alert('You got less than 5 right!');
-      }else if ( currentScore >= 5){
-        alert('Good job! Level 1 Complete');
-      }else if(currentScore >= 10){
-        alert('Outstanding! Level 2 Complete');
-      }
+      resultPrompt();
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
     }
+  }
+}
+
+function resultPrompt() {
+  if (currentScore < 5) {
+    alert("You got less than 5 right! Try Again");
+  } else if (currentScore >= 5) {
+    alert("Good job! Level 1 Complete");
+  } else if (currentScore >= 10) {
+    alert("Outstanding! Level 2 Complete");
   }
 }
 
