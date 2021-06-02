@@ -1,7 +1,6 @@
 /*----- constants -----*/
 
 /*----- app's state (variables) -----*/
-let playerName;
 let highScore;
 let currentScore;
 let userSequence = [];
@@ -10,7 +9,7 @@ let compSequence = [];
 
 /*----- cached element references -----*/
 
-playerName = document.querySelector("#player-name");
+let playerName = document.querySelector("#player-name");
 
 let cScore = document.querySelector("#current-result");
 let hScore = document.querySelector("#high-result");
@@ -45,7 +44,6 @@ function dimButton(doc) {
   }, 500);
 }
 
-//init();
 /*----- functions -----*/
 
 // create an init() function that creates the starting foundation of the game
@@ -60,24 +58,21 @@ function init() {
 function playRound(){
   getPlayerName();
   render();
-
 }
 
-function render(){
-  
+function render(){ 
   compGenSequence();
-  showMoves();
-  //compareResults();
-  
+  showMoves(); 
+
 }
 let j = 0;
 function compareResults(){
   if(userSequence.length === compSequence.length){
     cScore.innerText = j + 1;
-    //console.log(userSequence.length + " == " + compSequence.length)
     for(let i = 0; i < compSequence.length; i++){
-      if(userSequence[i] == compSequence[i].id){
-        //console.log(userSequence[i] + " == " + compSequence[i].id)
+      if(userSequence[i] === compSequence[i].id){
+        console.log("user: " + userSequence + " computer: " + compSequence[i].id)
+        continue;
       }else {
         console.log(userSequence + " ==> " + compSequence[i].id)
         alert('YOU LOSE')
@@ -103,11 +98,9 @@ function compGenSequence() {
 document.querySelectorAll(".quarter-panel").forEach((item) => {
   item.addEventListener("mousedown", (flashButton) => {
     userSequence.push(item.id);
-    compareResults();
-    //compGenSequence();
-    //showMoves();
     //item.style.backgroundColor = "white";
     item.style.opacity = "0.8";
+    compareResults();
   });
   document.querySelectorAll(".quarter-panel").forEach((newItem) => {
     newItem.addEventListener("mouseup", (resetButton) => {
@@ -115,7 +108,9 @@ document.querySelectorAll(".quarter-panel").forEach((item) => {
       newItem.style.opacity = "1.0";
     });
   });
+  
 });
+
 
 //function to get player name
 function getPlayerName() {
