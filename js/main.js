@@ -107,8 +107,13 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-      console.log(currentScore);
-      alert("You lost");
+      if(currentScore < 5){
+        alert('You got less than 5 right!');
+      }else if ( currentScore >= 5){
+        alert('Good job! Level 1 Complete');
+      }else if(currentScore >= 10){
+        alert('Outstanding! Level 2 Complete');
+      }
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
@@ -127,7 +132,7 @@ function compGenSequence() {
 
 //function to get player name
 function getPlayerName() {
-  let namePrompt = prompt("Please enter your name");
+  let namePrompt = prompt("Please enter your name: ", "right here!");
   if (namePrompt != null) {
     playerName.innerText = namePrompt;
   }

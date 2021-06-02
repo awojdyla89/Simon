@@ -66,19 +66,19 @@ main {
 
 .green-button {
   border-top-left-radius: 100%;
-  background-color: green;
+  background-color: #22d900;
 }
 .yellow-button {
   border-top-right-radius: 100%;
-  background-color: yellow;
+  background-color: #ffff00;
 }
 .red-button {
   border-bottom-left-radius: 100%;
-  background-color: red;
+  background-color: #ff0000;
 }
 .blue-button {
   border-bottom-right-radius: 100%;
-  background-color: blue;
+  background-color: #099fff;
 }
 
 .relative-div {
