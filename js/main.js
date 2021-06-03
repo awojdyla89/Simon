@@ -17,11 +17,15 @@ let redBtn = document.querySelector("#red");
 let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
+let alertBox = document.querySelector(".alert-box");
+let cancelButton = document.querySelectorAll("#x-button");
+let textBox = document.querySelector(".text-box");
 
 /*----- event listeners -----*/
 
 document.querySelector("#start-button").addEventListener("click", playRound);
 document.querySelector("#reset-button").addEventListener("click", init);
+document.querySelector(".x-button").addEventListener("click", closeBox);
 
 //for every user click event the button clicked is stored in an array.
 document.querySelectorAll(".quarter-panel").forEach((item) => {
@@ -39,9 +43,11 @@ document.querySelectorAll(".quarter-panel").forEach((item) => {
   });
 });
 
+
+
 /*----- functions -----*/
 
-getPlayerName();
+//getPlayerName();
 // initializes the game state with the reset button listener
 function init() {
   playerName.innerText = "";
@@ -87,6 +93,24 @@ function dimButton(doc) {
   }, 500);
 }
 
+function closeBox(){
+  alertBox.style.opacity = "0";
+  setTimeout(function(){ 
+    alertBox.style.display = "none"; }, 600);
+}
+
+// function levelZero(){
+//   alertBox.style.visibility = "visible";
+//  textBox.innerText = 'You scored below 5';
+ 
+// }
+ 
+// function levelOne(){
+//   alertBox.style.visibility = "visible";
+//   alertBox.style.backgroundColor = 'green';
+//   textBox.innerText = "Good job! Level 1 Complete";
+// }
+
 // compares the computer generated sequence with the users sequence for equality
 function compareResults() {
   for (let i = 0; i < userSequence.length; i++) {
@@ -107,7 +131,17 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-      resultPrompt();
+      alertBox.style.visibility = 'hidden';
+      if(currentScore < 5){
+        alertBox.style.visibility = "visible";
+ textBox.innerText = 'You scored below 5';
+      }else if (currentScore >=5){
+        alertBox.style.visibility = "visible";
+  alertBox.style.backgroundColor = 'green';
+  textBox.innerText = "Good job! Level 1 Complete";
+      
+        
+      }
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
@@ -115,15 +149,20 @@ function compareResults() {
   }
 }
 
-function resultPrompt() {
-  if (currentScore < 5) {
-    alert("You got less than 5 right! Try Again");
-  } else if (currentScore >= 5) {
-    alert("Good job! Level 1 Complete");
-  } else if (currentScore >= 10) {
-    alert("Outstanding! Level 2 Complete");
-  }
-}
+
+  
+
+
+
+// function resultPrompt() {
+//   if (currentScore < 5) {
+//     alert("You got less than 5 right! Try Again");
+//   } else if (currentScore >= 5) {
+//     alert("Good job! Level 1 Complete");
+//   } else if (currentScore >= 10) {
+//     alert("Outstanding! Level 2 Complete");
+//   }
+// }
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {

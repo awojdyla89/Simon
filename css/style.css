@@ -131,3 +131,30 @@ main {
 #reset-button:hover {
   color: rgb(254, 254, 95);
 }
+
+.alert-box {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+ position: relative;
+ bottom: 807px;
+ visibility:hidden;
+ 
+}
+
+.x-button{
+  margin-left: 15px;
+  color: rgb(154, 69, 69);
+  font-weight: bold;
+  float: right; 
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+.x-button:hover{
+  color: black;
+}
