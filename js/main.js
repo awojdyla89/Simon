@@ -127,23 +127,25 @@ function compareResults() {
 }
 
 function promptResults() {
+  currentScore = currentScore - 1;
+  console.log("score: " ,currentScore)
   if (currentScore <= 3) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "red";
-    textBox.innerText = "You scored Less than 3 Try again!";
+    textBox.innerText = "You scored 3 or less Try again!";
   }
   if (currentScore >= 4 && currentScore < 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "orange";
-    textBox.innerText = "3 to 5 in a row - Level 1 Complete!";
+    textBox.innerText = "4 in a row - Level 1 Complete!";
   }
   if (currentScore >= 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
-    textBox.innerText = "5 or more - Level 2 Complete!";
+    textBox.innerText = "5 or more in a row - Level 2 Complete!";
   }
   return;
 }
