@@ -117,20 +117,8 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-      
-      if(currentScore < 3){
-        alertBox.style.visibility = "visible";
-        alertBox.style.opacity = "1";
-        alertBox.style.backgroundColor = "red";
-        textBox.innerText = "You scored Less than 5 Try again!";
-      } 
-      if(currentScore >= 3){
-        alertBox.style.visibility = "visible";
-        alertBox.style.opacity = "1";
-        alertBox.style.backgroundColor = "green";
-        textBox.innerText = "Good job! Level 1 Complete";
-      }
-  
+    
+      promptResults();
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
@@ -139,36 +127,33 @@ function compareResults() {
   return;
 }
 
-// function promptResults(){
-//   if(currentScore < 5){
-//     alertBox.style.visibility = "visible";
-//     alertBox.style.opacity = "1";
-//     textBox.innerText = "You scored Less than 5 Try again!";
-//   }else if(currentScore >= 5){
-//     alertBox.style.visibility = "visible";
-//     alertBox.style.opacity = "1";
-//     alertBox.style.backgroundColor = "green";
-//     textBox.innerText = "Good job! Level 1 Complete";
-//   }
-  
-// }
-
-// function resultPrompt() {
-//   if (currentScore < 5) {
-//     alert("You got less than 5 right! Try Again");
-//   } else if (currentScore >= 5) {
-//     alert("Good job! Level 1 Complete");
-//   } else if (currentScore >= 10) {
-//     alert("Outstanding! Level 2 Complete");
-//   }
-// }
+function promptResults(){
+  if(currentScore < 3){
+    alertBox.style.visibility = "visible";
+    alertBox.style.opacity = "1";
+    alertBox.style.backgroundColor = "red";
+    textBox.innerText = "You scored Less than 3 Try again!";
+  } 
+  if(currentScore >= 3 && currentScore < 5){
+    alertBox.style.visibility = "visible";
+    alertBox.style.opacity = "1";
+    alertBox.style.backgroundColor = "yellow";
+    textBox.innerText = "3 to 5 in a row - Level 1 Complete!";
+  }
+  if(currentScore >= 5){
+    alertBox.style.visibility = "visible";
+    alertBox.style.opacity = "1";
+    alertBox.style.backgroundColor = "Green";
+    textBox.innerText = "5 or more - Level 2 Complete!";
+  }
+  return;
+}
 
 // create a randomNum function that generates a random number between 1-4
 function compGenSequence() {
   let choices = [greenBtn, redBtn, blueBtn, yellowBtn];
   let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
   compSequence.push(choices[randomIndex]);
-
   return compSequence;
 }
 
