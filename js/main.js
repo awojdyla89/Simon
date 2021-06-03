@@ -43,8 +43,6 @@ document.querySelectorAll(".quarter-panel").forEach((item) => {
   });
 });
 
-
-
 /*----- functions -----*/
 
 //getPlayerName();
@@ -93,23 +91,11 @@ function dimButton(doc) {
   }, 500);
 }
 
-function closeBox(){
+function closeBox() {
   alertBox.style.opacity = "0";
-  setTimeout(function(){ 
-    alertBox.style.display = "none"; }, 600);
+  //alertBox.style.display = "none"
+  alertBox.style.visibility = "hidden";
 }
-
-// function levelZero(){
-//   alertBox.style.visibility = "visible";
-//  textBox.innerText = 'You scored below 5';
- 
-// }
- 
-// function levelOne(){
-//   alertBox.style.visibility = "visible";
-//   alertBox.style.backgroundColor = 'green';
-//   textBox.innerText = "Good job! Level 1 Complete";
-// }
 
 // compares the computer generated sequence with the users sequence for equality
 function compareResults() {
@@ -131,28 +117,41 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-      alertBox.style.visibility = 'hidden';
-      if(currentScore < 5){
-        alertBox.style.visibility = "visible";
- textBox.innerText = 'You scored below 5';
-      }else if (currentScore >=5){
-        alertBox.style.visibility = "visible";
-  alertBox.style.backgroundColor = 'green';
-  textBox.innerText = "Good job! Level 1 Complete";
       
-        
+      if(currentScore < 3){
+        alertBox.style.visibility = "visible";
+        alertBox.style.opacity = "1";
+        alertBox.style.backgroundColor = "red";
+        textBox.innerText = "You scored Less than 5 Try again!";
+      } 
+      if(currentScore >= 3){
+        alertBox.style.visibility = "visible";
+        alertBox.style.opacity = "1";
+        alertBox.style.backgroundColor = "green";
+        textBox.innerText = "Good job! Level 1 Complete";
       }
+  
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
     }
   }
+  return;
 }
 
-
+// function promptResults(){
+//   if(currentScore < 5){
+//     alertBox.style.visibility = "visible";
+//     alertBox.style.opacity = "1";
+//     textBox.innerText = "You scored Less than 5 Try again!";
+//   }else if(currentScore >= 5){
+//     alertBox.style.visibility = "visible";
+//     alertBox.style.opacity = "1";
+//     alertBox.style.backgroundColor = "green";
+//     textBox.innerText = "Good job! Level 1 Complete";
+//   }
   
-
-
+// }
 
 // function resultPrompt() {
 //   if (currentScore < 5) {
