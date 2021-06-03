@@ -129,12 +129,11 @@ function compareResults() {
 
 function promptResults() {
   currentScore = currentScore - 1;
-  console.log("score: ", currentScore);
   if (currentScore < 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "red";
-    textBox.innerText = "Less than 5 in a row - Try again!";
+    textBox.innerText = currentScore + " < 5 - Try again!";
   }
   if (currentScore >= 5 && currentScore <= 10) {
     alertBox.style.visibility = "visible";
