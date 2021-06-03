@@ -27,7 +27,8 @@ header {
 /* css grid - creates a 1 x 3 grid (1 row 3 columns) player name, current score, high score  */
 .stats-menu {
   display: grid;
-  grid-template-columns: auto auto auto;
+  /* grid-template-columns: auto auto auto; */
+  grid-template-columns: auto auto;
   grid-template-rows: auto;
   color: aqua;
   background-color: black;

@@ -9,7 +9,7 @@ let compSequence = [];
 
 /*----- cached element references -----*/
 
-let playerName = document.querySelector("#player-name");
+// let playerName = document.querySelector("#player-name");
 let cScore = document.querySelector("#current-result");
 let hScore = document.querySelector("#high-result");
 let greenBtn = document.querySelector("#green");
@@ -48,14 +48,15 @@ document.querySelectorAll(".quarter-panel").forEach((item) => {
 //getPlayerName();
 // initializes the game state with the reset button listener
 function init() {
-  playerName.innerText = "";
+  //playerName.innerText = "";
   cScore.innerText = 0;
   hScore.innerText = 0;
   highScore = 1;
   currentScore = 1;
   userSequence = [];
   compSequence = [];
-  getPlayerName();
+  //getPlayerName();
+ 
 }
 // function called on the start button listener
 function playRound() {
@@ -128,24 +129,24 @@ function compareResults() {
 
 function promptResults() {
   currentScore = currentScore - 1;
-  console.log("score: " ,currentScore)
-  if (currentScore <= 3) {
+  console.log("score: ", currentScore);
+  if (currentScore < 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "red";
-    textBox.innerText = "You scored 3 or less Try again!";
+    textBox.innerText = "Less than 5 in a row - Try again!";
   }
-  if (currentScore >= 4 && currentScore < 5) {
+  if (currentScore >= 5 && currentScore <= 10) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "orange";
-    textBox.innerText = "4 in a row - Level 1 Complete!";
+    textBox.innerText = currentScore + " in a row - Level 1 Complete!";
   }
-  if (currentScore >= 5) {
+  if (currentScore > 11) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
-    textBox.innerText = "5 or more in a row - Level 2 Complete!";
+    textBox.innerText =  currentScore + " in a row - Level 2 Complete!";
   }
   return;
 }
@@ -158,11 +159,11 @@ function compGenSequence() {
   return compSequence;
 }
 
-//function to get player name
-function getPlayerName() {
-  let namePrompt = prompt("Please enter your name: ", "NAME");
-  if (namePrompt != null) {
-    playerName.innerText = namePrompt;
-  }
-  return playerName;
-}
+// //function to get player name
+// function getPlayerName() {
+//    let namePrompt = prompt("Please enter your name: ", "NAME");
+//    if (namePrompt != null) {
+//     playerName.innerText = namePrompt;
+//   }
+//   return playerName;
+// }
