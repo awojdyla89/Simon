@@ -1,6 +1,7 @@
 /*----- constants -----*/
 
 /*----- app's state (variables) -----*/
+
 let highScore = 1;
 let currentScore = 1;
 let userSequence = [];
@@ -18,7 +19,6 @@ let blueBtn = document.querySelector("#blue");
 let startBtn = document.querySelector("#start-button");
 let resetBtn = document.querySelector("#reset-button");
 let alertBox = document.querySelector(".alert-box");
-let cancelButton = document.querySelectorAll("#x-button");
 let textBox = document.querySelector(".text-box");
 
 /*----- event listeners -----*/
@@ -80,7 +80,7 @@ function showMoves() {
     if (i >= compSequence.length) {
       clearInterval(moves);
     }
-  }, 600);
+  }, 488);
 }
 
 // helper function that creates a button dimming affect
@@ -88,7 +88,7 @@ function dimButton(doc) {
   doc.style.opacity = "0.6";
   setTimeout(function () {
     doc.style.opacity = "1";
-  }, 500);
+  }, 388);
 }
 
 function closeBox() {
@@ -117,7 +117,6 @@ function compareResults() {
       render();
       return;
     } else if (userSequence[i] !== compSequence[i].id) {
-    
       promptResults();
       currentScore = 1;
       hScore.innerText = highScore - 1;
@@ -127,20 +126,20 @@ function compareResults() {
   return;
 }
 
-function promptResults(){
-  if(currentScore < 3){
+function promptResults() {
+  if (currentScore <= 3) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "red";
     textBox.innerText = "You scored Less than 3 Try again!";
-  } 
-  if(currentScore >= 3 && currentScore < 5){
+  }
+  if (currentScore >= 4 && currentScore < 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
-    alertBox.style.backgroundColor = "yellow";
+    alertBox.style.backgroundColor = "orange";
     textBox.innerText = "3 to 5 in a row - Level 1 Complete!";
   }
-  if(currentScore >= 5){
+  if (currentScore >= 5) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
@@ -159,7 +158,7 @@ function compGenSequence() {
 
 //function to get player name
 function getPlayerName() {
-  let namePrompt = prompt("Please enter your name: ", "right here!");
+  let namePrompt = prompt("Please enter your name: ", "NAME");
   if (namePrompt != null) {
     playerName.innerText = namePrompt;
   }
