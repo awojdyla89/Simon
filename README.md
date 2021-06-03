@@ -5,18 +5,21 @@ For each consecutive level there will be an additional 5 more sequences to memor
 
 ## Wireframe ScreenShot
 <!-- ![Simon Wireframe](wireframe.png) -->
-![Simon Wireframe](wireframe-final.png)
+<!-- ![Simon Wireframe](wireframe-final.png) -->
+<img src="wireframe-final.png" width="550" height="450">
 
 ## Technologies Used
 - JavaScript
 - HTML
 - CSS
+---
 
 ## Getting Started
 - Press the "start" button to begin game play.
 - When you lose you will be prompted with what level you accomplished and your score.
 - The "start" button will hold your current "high score" and reset your "current score".
 - The "reset" button will restart the game with 0 for "high score" and "current score". 
+---
 
 ## Next Steps
 1. Create a 'player name' field with input functionality.
