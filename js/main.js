@@ -89,7 +89,6 @@ function compareResults() {
       userSequence[i] === compSequence[i].id &&
       userSequence.length !== compSequence.length
     ) {
-      continue;
     } else if (
       userSequence[i] === compSequence[i].id &&
       userSequence.length === compSequence.length
@@ -100,7 +99,6 @@ function compareResults() {
       }
       userSequence = [];
       render();
-      return;
     } else if (userSequence[i] !== compSequence[i].id) {
       promptResults();
       currentScore = 1;
@@ -108,7 +106,6 @@ function compareResults() {
       return highScore;
     }
   }
-  return;
 }
 
 function promptResults() {
@@ -124,22 +121,21 @@ function promptResults() {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "orange";
-    textBox.innerText = currentScore + " in a row - Level 1 Complete!";
+    textBox.innerText = "Level 1 Complete!";
     return;
   }
   if (currentScore > 6 && currentScore <= 9) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "lightblue";
-    textBox.innerText = currentScore + " in a row - Level 2 Complete! Nice!";
+    textBox.innerText = "Level 2 Complete! Nice!";
     return;
   }
   if (currentScore > 10 && currentScore <= 13) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
-    textBox.innerText =
-      currentScore + " in a row - Level 3 Complete! Fantastic!";
+    textBox.innerText = "Level 3 Complete! Fantastic!";
     return;
   }
   return;
