@@ -1,4 +1,3 @@
-/*----- constants -----*/
 /*----- app's state (variables) -----*/
 
 let highScore = 1;
@@ -90,7 +89,7 @@ function compareResults() {
       userSequence[i] === compSequence[i].id &&
       userSequence.length !== compSequence.length
     ) {
-      
+      continue;
     } else if (
       userSequence[i] === compSequence[i].id &&
       userSequence.length === compSequence.length
@@ -139,10 +138,10 @@ function promptResults() {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
-    textBox.innerText = currentScore + " in a row - Level 3 Complete! Fantastic!";
+    textBox.innerText =
+      currentScore + " in a row - Level 3 Complete! Fantastic!";
     return;
   }
-
   return;
 }
 
