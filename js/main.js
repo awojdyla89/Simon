@@ -114,27 +114,35 @@ function compareResults() {
 
 function promptResults() {
   currentScore = currentScore - 1;
-  if (currentScore < 5) {
+  if (currentScore < 3) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "red";
-    textBox.innerText = currentScore + " < 5 - Try again!";
+    textBox.innerText = "You need 3 in a row to level up - Try again!";
     return;
   }
-  if (currentScore >= 5 && currentScore <= 10) {
+  if (currentScore >= 3 && currentScore <= 6) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "orange";
     textBox.innerText = currentScore + " in a row - Level 1 Complete!";
     return;
   }
-  if (currentScore > 11) {
+  if (currentScore > 6 && currentScore <= 9) {
+    alertBox.style.visibility = "visible";
+    alertBox.style.opacity = "1";
+    alertBox.style.backgroundColor = "lightblue";
+    textBox.innerText = currentScore + " in a row - Level 2 Complete! Nice!";
+    return;
+  }
+  if (currentScore > 10 && currentScore <= 13) {
     alertBox.style.visibility = "visible";
     alertBox.style.opacity = "1";
     alertBox.style.backgroundColor = "Green";
-    textBox.innerText = currentScore + " in a row - Level 2 Complete!";
+    textBox.innerText = currentScore + " in a row - Level 3 Complete! Fantastic!";
     return;
   }
+
   return;
 }
 
