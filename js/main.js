@@ -1,5 +1,3 @@
-/*----- app's state (variables) -----*/
-
 let highScore = 1;
 let currentScore = 1;
 let userSequence = [];
@@ -84,27 +82,30 @@ function closeBox() {
 }
 
 function compareResults() {
-  for (let i = 0; i < userSequence.length; i++) {
+  for (move in userSequence) {
     if (
-      userSequence[i] === compSequence[i].id &&
-      userSequence.length !== compSequence.length
+      userSequence[move] === compSequence[move].id &&
+      userSequence.length != compSequence.length
     ) {
-    } else if (
-      userSequence[i] === compSequence[i].id &&
-      userSequence.length === compSequence.length
-    ) {
-      cScore.innerText = currentScore++;
-      if (currentScore > highScore) {
-        hScore.innerText = highScore++;
-      }
-      userSequence = [];
-      render();
-    } else if (userSequence[i] !== compSequence[i].id) {
+    } else if (userSequence[move] != compSequence[move].id) {
       promptResults();
       currentScore = 1;
       hScore.innerText = highScore - 1;
       return highScore;
     }
+  }
+  if (
+    userSequence[move] === compSequence[move].id &&
+    userSequence.length === compSequence.length
+  ) {
+    cScore.innerText = currentScore++;
+
+    if (currentScore > highScore) {
+      hScore.innerText = highScore++;
+    }
+
+    userSequence = [];
+    render();
   }
 }
 
