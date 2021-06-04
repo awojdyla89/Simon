@@ -1,8 +1,8 @@
 # Simon Game
 
 The Simon game was created in the 1970's by Ralph H. Baer and Howard J. Morrison. 
-The game is one of challenging a players memory retention. If you match more than 5 of Simons sequence you accomplish a level.
-In order to advance to the next level you must get 5 additional sequences correct to the running total of the previous sequence.
+The game is one of challenging a players memory retention. If you match more than 3 of Simons sequence you accomplish a level.
+In order to advance to the next level you must get 3 additional sequences correct to the running total of the previous sequence.
 
 ## Wireframe ScreenShot
 
