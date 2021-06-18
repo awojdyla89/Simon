@@ -145,6 +145,19 @@ function promptResults() {
   return;
 }
 
+// document.querySelectorAll(".quarter-panel").forEach((item) => {
+//   item.addEventListener("mousedown", (flashButton) => {
+//     userSequence.push(item.id);
+//     item.style.opacity = "0.8";
+//     compareResults();
+//   });
+//   document.querySelectorAll(".quarter-panel").forEach((newItem) => {
+//     newItem.addEventListener("mouseup", (resetButton) => {
+//       newItem.style.opacity = "1.0";
+//     });
+//   });
+// });
+
 
 // function compareResults() {
 //   for (let i = 0; i < userSequence.length; i++) {
