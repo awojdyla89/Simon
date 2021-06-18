@@ -11,8 +11,6 @@ let greenBtn = document.querySelector("#green");
 let yellowBtn = document.querySelector("#yellow");
 let redBtn = document.querySelector("#red");
 let blueBtn = document.querySelector("#blue");
-let startBtn = document.querySelector("#start-button");
-let resetBtn = document.querySelector("#reset-button");
 let alertBox = document.querySelector(".alert-box");
 let textBox = document.querySelector(".text-box");
 
@@ -21,19 +19,7 @@ let textBox = document.querySelector(".text-box");
 document.querySelector("#start-button").addEventListener("click", playRound);
 document.querySelector("#reset-button").addEventListener("click", init);
 document.querySelector(".x-button").addEventListener("click", closeBox);
-
-document.querySelectorAll(".quarter-panel").forEach((item) => {
-  item.addEventListener("mousedown", (flashButton) => {
-    userSequence.push(item.id);
-    item.style.opacity = "0.8";
-    compareResults();
-  });
-  document.querySelectorAll(".quarter-panel").forEach((newItem) => {
-    newItem.addEventListener("mouseup", (resetButton) => {
-      newItem.style.opacity = "1.0";
-    });
-  });
-});
+document.querySelector(".simon-buttons").addEventListener("click", playerMove);
 
 /*----- functions -----*/
 
@@ -54,8 +40,33 @@ function playRound() {
 }
 
 function render() {
-  compGenSequence();
+  computerMove();
   showMoves();
+}
+
+function computerMove() {
+  let choices = [greenBtn, redBtn, blueBtn, yellowBtn];
+  let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
+  compSequence.push(choices[randomIndex]);
+  return compSequence;
+}
+
+function playerMove(evt) {
+  if (
+    evt.target.id == "green" ||
+    evt.target.id == "red" ||
+    evt.target.id == "blue" ||
+    evt.target.id == "yellow"
+  ) {
+    userSequence.push(evt.target.id);
+
+    evt.target.style.opacity = "0.6";
+    setTimeout(function () {
+      evt.target.style.opacity = "1";
+    }, 170);
+
+    compareResults();
+  }
 }
 
 function showMoves() {
@@ -140,11 +151,4 @@ function promptResults() {
     return;
   }
   return;
-}
-
-function compGenSequence() {
-  let choices = [greenBtn, redBtn, blueBtn, yellowBtn];
-  let randomIndex = Math.floor(Math.random() * choices.length - 1) + 1;
-  compSequence.push(choices[randomIndex]);
-  return compSequence;
 }
